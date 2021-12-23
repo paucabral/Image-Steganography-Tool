@@ -129,6 +129,53 @@ def image2imageIndex():
 def image2imageEncode():
     if request.method == 'GET':
         return render_template('image-to-image-encode.html')
+    elif request.method == 'POST':
+        # COvER IMG
+        # check if the post request has the file part
+        if 'cover_img' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        cover_image = request.files['cover_img']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if cover_image.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if cover_image and allowed_file(cover_image.filename):
+            cover_image_filename = secure_filename(
+                datetime.now().strftime("%m-%d-%Y-%H-%M-%S-") + cover_image.filename)
+            cover_image.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], cover_image_filename))
+            cover_image_filepath = os.path.join(
+                app.config['UPLOAD_FOLDER'], cover_image_filename)
+
+        # SECRET IMG
+        # check if the post request has the file part
+        if 'secret_img' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        secret_image = request.files['secret_img']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if secret_image.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if secret_image and allowed_file(secret_image.filename):
+            secret_image_filename = secure_filename(
+                datetime.now().strftime("%m-%d-%Y-%H-%M-%S-") + secret_image.filename)
+            secret_image.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], secret_image_filename))
+            secret_image_filepath = os.path.join(
+                app.config['UPLOAD_FOLDER'], secret_image_filename)
+
+        steg_image_filepath = '{}-{}-steg.png'.format(
+            cover_image_filepath, secret_image_filename)
+
+        # EXECUTE ENCODING
+        img2img.merge(COVER_IMG_FILEPATH=cover_image_filepath,
+                      SECRET_IMG_FILEPATH=secret_image_filepath, OUTPUT_IMG_FILEPATH=steg_image_filepath)
+        session["steg_image"] = steg_image_filepath
+        return redirect('/image-to-image/encode/result')
 
 
 @app.route("/image-to-image/encode/result", methods=['GET'])
