@@ -20,8 +20,14 @@ def text2imageEncode():
     if request.method == 'GET':
         return render_template('text-to-image-encode.html')
     if request.method == 'POST':
-
-        return render_template('text-to-image-encode.html')
+        if request.form.get('password'):
+            password = request.form.get('password')
+        else:
+            password = None
+        message = request.form.get('message')
+        steg_image = request.form.get('steg_image')
+        print(message, password, steg_image)
+        return redirect('/text-to-image/encode')
 
 
 @app.route("/text-to-image/encode/result", methods=['GET'])
