@@ -180,7 +180,11 @@ def image2imageEncode():
 
 @app.route("/image-to-image/encode/result", methods=['GET'])
 def image2imageEncodeResult():
-    return render_template('image-to-image-encode-result.html')
+    if 'steg_image' in session:
+        steg_image = session['steg_image']
+        return render_template('image-to-image-encode-result.html', steg_image=steg_image)
+    else:
+        return redirect('/')
 
 
 @app.route("/image-to-image/decode", methods=['GET', 'POST'])
