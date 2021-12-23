@@ -1,12 +1,13 @@
 body {
   font-family: sans-serif;
-  background-color: #28293d !important;
+  background-color: #1c1c27 !important;
   color: #9090a7 !important;
 }
 
 h2 {
   text-transform: uppercase;
   color: #ebeaef !important;
+  text-align: center;
 }
 
 #index {
@@ -92,12 +93,11 @@ ol {
 }
 
 .card-choices {
-  margin: 2em;
+  margin: 1em;
   min-height: 75vh;
-  width: auto;
   align-items: center;
   justify-content: center;
-  border-radius: 2%;
+  border-radius: 10px;
   background-color: #4d6de6;
 }
 
@@ -123,12 +123,27 @@ ol {
   border-radius: 10px;
 }
 
+.card-upload {
+  margin: 1em;
+  min-height: 75vh;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #4d6de6;
+}
+
+.card-form {
+  margin: 1em;
+  min-height: 75vh;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #34374c;
+}
+
 @media screen and (max-width: 450px) {
-  .row {
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-  }
-  
   #index {
   width: 90% !important;
   }
