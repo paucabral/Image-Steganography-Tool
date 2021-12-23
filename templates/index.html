@@ -1,6 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<a href="/text-to-image">Text to Image</a>
-<a href="/image-to-image">Image to Image</a>
+<div class="row g-0">
+  <div class="row g-0">
+    <nav class="container-fluid text-center pt-5">
+      <span style="font-size: small; text-transform: uppercase;">brought to you by</span><br>
+      <span style="font-size: 1.5em; color: #fafafc !important;">HIGH<span
+          style="font-weight: 700; color: #00cfdd !important;">GROUNDS</span></span><br>
+    </nav>
+  </div>
+  <br>
+  <div class="pb-5 container-fluid" id="index">
+    <div class="row g-0 text-center justify-content-center align-self-center">
+      <h1 id="pdTitle" class="pt-5 my-auto">Image Steganography Tool</h1>
+    </div>
+    <br>
+    <div class="row g-0 text-center justify-content-center align-self-center">
+      <p id="pdDescription" class="pt-5 my-auto">With the use of image processing, steganography can be applied to
+        images to produce a stego image; the output of the
+        embedding process which contain the hidden message either in pixel values or in optimally selected coefficients.
+        This
+        done by reducing the image in their numerical forms, which essentially are pixel values. These pixel values, can
+        then be
+        mathematically manipulated in order to produce an image that looks normal to the naked eye, but has been
+        manipulated to
+        contain a secret.
+      </p>
+    </div>
+    <div class="text-center pt-5">
+      <a href="/text-to-image" class="btn btn-outline-primary text-white m-2" style="font-weight: bold;">&nbsp;TEXT TO
+        IMAGE&nbsp;</a>
+      <a href="/image-to-image" class="btn btn-outline-danger text-white m-2" style="font-weight: bold;">IMAGE TO
+        IMAGE</a>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock %}

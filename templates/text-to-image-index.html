@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Text to Image</h1>
-<a href="/text-to-image/encode">encode</a>
-<a href="/text-to-image/decode">decode</a>
+<h2 style="text-align: center;">Text to Image</h2>
+<div class="container-fluid row">
+  <div class="col" style="text-align: center;">
+    <a href="/text-to-image/encode">encode</a>
+  </div>
+  <div class="col" style="text-align: center;">
+    <a href="/text-to-image/decode">decode</a>
+  </div>
+</div>
 {% endblock %}
