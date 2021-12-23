@@ -64,7 +64,7 @@ def text2imageEncode():
 
         # EXECUTE ENCODING
         txt2img.encode(input_filepath=cover_image_filepath, text=message,
-                       output_filepath=steg_image_filepath, password=None)
+                       output_filepath=steg_image_filepath, password=password)
         session["steg_image"] = steg_image_filepath
         return redirect('/text-to-image/encode')
 
@@ -78,6 +78,33 @@ def text2imageEncodeResult():
 def text2imageDecode():
     if request.method == 'GET':
         return render_template('text-to-image-decode.html')
+    elif request.method == 'POST':
+        # check if the post request has the file part
+        if 'steg_img' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        steg_image = request.files['steg_img']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if steg_image.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if steg_image and allowed_file(steg_image.filename):
+            steg_image_filename = secure_filename(steg_image.filename)
+            steg_image.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], steg_image_filename))
+            steg_image_filepath = os.path.join(
+                app.config['UPLOAD_FOLDER'], steg_image_filename)
+        if request.form.get('password'):
+            password = request.form.get('password')
+        else:
+            password = None
+
+        # EXECUTE ENCODING
+        message = txt2img.decode(
+            input_filepath=steg_image_filepath, password=password)
+        print(message)
+        return redirect('/text-to-image/decode')
 
 
 @app.route("/text-to-image/decode/result", methods=['GET'])
