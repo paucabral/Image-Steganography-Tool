@@ -305,4 +305,8 @@ ol {
     text-align: center !important;
     padding: 0.2em !important;
   }
+
+  .dropdown-menu-end {
+    right: 0em;
+  }
 }
