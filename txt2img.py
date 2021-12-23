@@ -4,7 +4,6 @@ from base64 import urlsafe_b64encode
 from hashlib import md5
 from cryptography.fernet import Fernet
 import numpy as np
-import matplotlib.pyplot as plt
 from PIL import Image, ImageChops, ImageDraw
 import requests
 from io import BytesIO

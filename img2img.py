@@ -3,7 +3,6 @@ import numpy as np
 from io import BytesIO
 import requests
 from cv2 import imread,imwrite
-import matplotlib.pyplot as plt
 from skimage import io
 
 def int_to_bin(rgb):
