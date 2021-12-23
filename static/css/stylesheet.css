@@ -130,7 +130,7 @@ ol {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background-color: #4d6de6;
+  background-color: #3e4663;
 }
 
 .card-form {
@@ -141,6 +141,27 @@ ol {
   justify-content: center;
   border-radius: 10px;
   background-color: #34374c;
+  padding: 2em;
+}
+
+.card-form input {
+  background-color: #252630;
+  color: white;
+}
+
+.card-form input:focus {
+  background-color: #252630;
+  color: white;
+}
+
+.card-form textarea {
+  background-color: #252630;
+  color: white;
+}
+
+.card-form textarea:focus {
+  background-color: #252630;
+  color: white;
 }
 
 @media screen and (max-width: 450px) {

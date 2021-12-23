@@ -2,12 +2,40 @@
 
 {% block content %}
 <h2>Text to Image Encode</h2>
-<div class="container-fluid row pt-3" style="background-color: #28293d;">
-  <div class="col-sm card-upload d-flex justify-content-center">
-    <a href="/text-to-image/encode">encode</a>
+<form>
+  <div class="pt-3">
+    <div class="row container-fluid">
+      <div class="col-sm card-upload d-flex justify-content-center">
+        <div class="custom-file container-fluid form form-group">
+          <input name="cover_img" type="file" class="custom-file-input" id="customFile" required>
+        </div>
+      </div>
+      <div class="col-sm card-form d-flex justify-content-center">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Password:</label>
+              <input name="password" type="password" class="form-control" id="exampleFormControlInput1"
+                placeholder="(optional)">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+              <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="20"
+                required></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3">
+              <button class="btn-primary form-control" style="font-weight: bold; border-radius: 5px;">
+                HIDE TEXT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-sm card-form d-flex justify-content-center">
-    <a href="/text-to-image/decode">decode</a>
-  </div>
-</div>
+</form>
 {% endblock %}
