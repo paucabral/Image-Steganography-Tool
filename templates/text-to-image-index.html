@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">Text in Image</h2>
+<div class="container-fluid row pt-3">
+  <div class="col-sm card-choices d-flex justify-content-center" style="background: linear-gradient(to bottom,
+      rgba(76, 25, 196, 0.8),
+      rgba(0, 0, 0, 0.8)),
+    url('/static/img/encode-image.jpg') center no-repeat; background-size: cover;">
+    <a href="/text-to-image/encode">encode</a>
+  </div>
+  <div class="col-sm card-choices d-flex justify-content-center" style="background: linear-gradient(to bottom,
+      rgba(151, 22, 102, 0.8),
+      rgba(0, 0, 0, 0.8)),
+    url('/static/img/decode-image.jpg') center no-repeat; background-size: cover;">
+    <a href="/text-to-image/decode">decode</a>
+  </div>
+</div>
+{% endblock %}

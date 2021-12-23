@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Text in Image Encode Result</h2>
+<div class="container">
+  <p class="pt-5 pb-5" style="text-align: center;">
+    <img src="/{{ steg_image }}" style="max-width: 100%;">
+  <div style="text-align: center;">
+    <a href="/{{ steg_image }}" class="btn btn-success text-align-center" style="font-weight: bold;" download><i
+        class="fa fa-download"></i>
+      DOWNLOAD</a>
+  </div>
+  </p>
+</div>
+
+{% endblock %}
