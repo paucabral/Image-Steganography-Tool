@@ -91,6 +91,38 @@ ol {
   transition: 0.22s ease;
 }
 
+.card-choices {
+  margin: 2em;
+  min-height: 75vh;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2%;
+  background-color: #4d6de6;
+}
+
+.card-choices:hover {
+  transition: all 0.3s;
+  filter: saturate(2) !important;
+}
+
+.card-choices a {
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: x-large;
+  color: #ebeaef;
+}
+
+.card-choices a:hover {
+  font-size: 2em;
+  transition: all 0.2s;
+  color: #ffffff !important;
+  background-color: #30253869;
+  padding: 1em;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 450px) {
   .row {
     margin-right: 0 !important;

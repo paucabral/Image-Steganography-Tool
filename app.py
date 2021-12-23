@@ -52,6 +52,5 @@ def image2imageDecode():
 def image2imageDecodeResult():
   return render_template('image-to-image-decode-result.html')
 
-
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=5000)
