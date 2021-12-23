@@ -74,6 +74,8 @@ def text2imageEncodeResult():
     if 'steg_image' in session:
         steg_image = session['steg_image']
         return render_template('text-to-image-encode-result.html', steg_image=steg_image)
+    else:
+        return redirect('/')
 
 
 @app.route("/text-to-image/decode", methods=['GET', 'POST'])
@@ -105,13 +107,17 @@ def text2imageDecode():
         # EXECUTE ENCODING
         message = txt2img.decode(
             input_filepath=steg_image_filepath, password=password)
-        print(message)
-        return redirect('/text-to-image/decode')
+        session["steg_message"] = message
+        return redirect('/text-to-image/decode/result')
 
 
 @app.route("/text-to-image/decode/result", methods=['GET'])
 def text2imageDecodeResult():
-    return render_template('text-to-image-decode-result.html')
+    if 'steg_message' in session:
+        steg_message = session['steg_message']
+        return render_template('text-to-image-decode-result.html', steg_message=steg_message)
+    else:
+        return redirect('/')
 
 
 @app.route("/image-to-image", methods=['GET'])

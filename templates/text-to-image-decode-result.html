@@ -2,4 +2,13 @@
 
 {% block content %}
 <h2>Text to Image Decode Result</h2>
+<div class="container">
+  <div class="row">
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+      <textarea name="message" class="form-control dark-input-textarea" id="exampleFormControlTextarea1" rows="20"
+        disabled>{{ steg_message }}</textarea>
+    </div>
+  </div>
+</div>
 {% endblock %}

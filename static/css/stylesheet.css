@@ -276,6 +276,26 @@ ol {
   color: white;
 }
 
+.dark-input-textarea {
+  background-color: #252630 !important;
+  color: white !important;
+}
+
+.dark-input-textarea:focus {
+  background-color: #252630 !important;
+  color: white !important;
+}
+
+.dark-input-password {
+  background-color: #252630 !important;
+  color: white !important;
+}
+
+.dark-input-password:focus {
+  background-color: #252630 !important;
+  color: white !important;
+}
+
 @media screen and (max-width: 450px) {
   #index {
   width: 90% !important;
