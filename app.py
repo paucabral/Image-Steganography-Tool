@@ -66,12 +66,14 @@ def text2imageEncode():
         txt2img.encode(input_filepath=cover_image_filepath, text=message,
                        output_filepath=steg_image_filepath, password=password)
         session["steg_image"] = steg_image_filepath
-        return redirect('/text-to-image/encode')
+        return redirect('/text-to-image/encode/result')
 
 
 @app.route("/text-to-image/encode/result", methods=['GET'])
 def text2imageEncodeResult():
-    return render_template('text-to-image-encode-result.html')
+    if 'steg_image' in session:
+        steg_image = session['steg_image']
+        return render_template('text-to-image-encode-result.html', steg_image=steg_image)
 
 
 @app.route("/text-to-image/decode", methods=['GET', 'POST'])
