@@ -2,8 +2,8 @@
 
 {% block content %}
 <h2>Image in Image Decode</h2>
-<div class="container-fluid" enctype=multipart/form-data>
-  <form method="POST">
+<div class="container-fluid">
+  <form method="POST" enctype=multipart/form-data>
     <div class="col-sm card-upload d-flex justify-content-center p-3">
       <div class="col-sm-12">
         <div class="row text-center text-white">
@@ -14,7 +14,7 @@
 
             <!-- Upload image input-->
             <div class="input-group mb-3 px-2 py-2 bg-white shadow-sm" style="border-radius: 10px;">
-              <input name="cover_img" id="upload" type="file" onchange="readURL(this);" class="form-control border-0"
+              <input name="steg_img" id="upload" type="file" onchange="readURL(this);" class="form-control border-0"
                 accept="image/x-png,image/jpeg">
               <label id="upload-label" for="upload" class="text-muted">Choose file</label>
               <div class="input-group-append">

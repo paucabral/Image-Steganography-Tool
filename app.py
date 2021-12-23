@@ -191,11 +191,42 @@ def image2imageEncodeResult():
 def image2imageDecode():
     if request.method == 'GET':
         return render_template('image-to-image-decode.html')
+    elif request.method == 'POST':
+        # STEG IMG
+        # check if the post request has the file part
+        if 'steg_img' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        steg_image = request.files['steg_img']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if steg_image.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if steg_image and allowed_file(steg_image.filename):
+            steg_image_filename = secure_filename(
+                datetime.now().strftime("%m-%d-%Y-%H-%M-%S-") + steg_image.filename)
+            steg_image.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], steg_image_filename))
+            steg_image_filepath = os.path.join(
+                app.config['UPLOAD_FOLDER'], steg_image_filename)
+
+        decoded_image_filepath = '{}-decoded.png'.format(steg_image_filepath)
+
+        # EXECUTE ENCODING
+        img2img.unmerge(ENCODED_IMG_FILEPATH=steg_image_filepath,
+                        OUTPUT_IMG_FILEPATH=decoded_image_filepath)
+        session["decoded_image"] = decoded_image_filepath
+        return redirect('/image-to-image/decode/result')
 
 
 @app.route("/image-to-image/decode/result", methods=['GET'])
 def image2imageDecodeResult():
-    return render_template('image-to-image-decode-result.html')
+    if 'decoded_image' in session:
+        decoded_image = session['decoded_image']
+        return render_template('image-to-image-decode-result.html', decoded_image=decoded_image)
+    else:
+        return redirect('/')
 
 
 if __name__ == '__main__':
