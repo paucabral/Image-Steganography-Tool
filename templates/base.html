@@ -55,25 +55,27 @@
       </div>
     </nav>
   </header>
-  <div class="container-fluid pt-4 pb-4" style="min-height: 101vh; align-items: center; justify-content: center;">
-    <!-- Flash -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <div class=flashes>
-      {% for message in messages %}
-      <div id="flash" class="alert alert-danger" role="alert">
-        {{ message }}
-      </div>
-      {% endfor %}
+  <!-- Flash -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="flashes mx-4 mt-2">
+    {% for message in messages %}
+    <div id="flash" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    {% endif %}
-    {% endwith %}
-    <script>
-      setTimeout(function () {
-        $("#flash").fadeOut().empty();
-      }, 3000);
-    </script>
-    <!-- End Flash -->
+    {% endfor %}
+  </div>
+  </div>
+  {% endif %}
+  {% endwith %}
+  <script>
+    setTimeout(function () {
+      $("#flash").fadeOut().empty();
+    }, 3000);
+  </script>
+  <!-- End Flash -->
+  <div class="container-fluid pt-4 pb-4" style="min-height: 101vh; align-items: center; justify-content: center;">
     {% block content %}
     {% endblock %}
   </div>
