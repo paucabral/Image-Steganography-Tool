@@ -49,7 +49,7 @@ def encode(input_filepath, text, output_filepath, password=None, progressBar=Non
 
     if img is None:  # Check if an image is loaded from the input image path supplied.
         # Show an error message if the input image path is invalid.
-        print("Error: The image file '{}' is inaccessible".format(input_filepath))
+        return ("Error: The image file '{}' is inaccessible".format(input_filepath))
 
     # Take note of the height and width of the image.
     height, width = img.shape[0], img.shape[1]
@@ -61,7 +61,7 @@ def encode(input_filepath, text, output_filepath, password=None, progressBar=Non
     # Check if the binary representation of the message will fit to the supplied input image by comparing the total bits it require with the image's encoding capacity.
     if total_bits > encoding_capacity:
         # Show an error if the size of the message will not fit in the image.
-        print("Error: The data size is too big to fit in this image!")
+        return ("Error: The data size is too big to fit in this image!")
 
     completed = False  # Initialize completion to False boolean.
     modified_bits = 0  # Initialize the number of modified bits counter to 0.
@@ -97,7 +97,7 @@ def encode(input_filepath, text, output_filepath, password=None, progressBar=Non
 
     if not written:  # Check if no image is written.
         # Show an error message if the image fails to write in the desired output file path.
-        print("Error: Failed to write image '{}'".format(output_filepath))
+        return ("Error: Failed to write image '{}'".format(output_filepath))
 
     # Calculate the loss in quality by dividing the number of modified bits with the image encoding capacity and multiplying it to 100%.
     loss_percentage = (modified_bits/encoding_capacity)*100
@@ -112,7 +112,7 @@ def decode(input_filepath, password=None):
 
     if img is None:  # Check if an image is loaded from the input image path supplied..
         # Show an error message if the input image path is invalid.
-        print("Error: The image file '{}' is inaccessible".format(input_filepath))
+        return ("Error: The image file '{}' is inaccessible".format(input_filepath))
 
     # Take note of the height and width of the image.
     height, width = img.shape[0], img.shape[1]
@@ -149,4 +149,4 @@ def decode(input_filepath, password=None):
         try:  # Try decrypting the converted string value of the binary data.
             return encrypt_decrypt(bin2str(result), password, 'dec')
         except:  # If the password that was provided was incorrect, display a message showing the the password provided was invalid.
-            print("Error: Invalid password!")
+            return ("Error: Invalid password!")
