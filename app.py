@@ -63,8 +63,14 @@ def text2imageEncode():
         steg_image_filepath = '{}-steg.png'.format(cover_image_filepath)
 
         # EXECUTE ENCODING
-        txt2img.encode(input_filepath=cover_image_filepath, text=message,
-                       output_filepath=steg_image_filepath, password=password)
+        msg = txt2img.encode(input_filepath=cover_image_filepath, text=message,
+                             output_filepath=steg_image_filepath, password=password)
+
+        if type(msg) == str:
+            if 'Error:' in msg:
+                flash(msg)
+                return render_template('text-to-image-encode.html')
+
         session["steg_image"] = steg_image_filepath
         return redirect('/text-to-image/encode/result')
 
