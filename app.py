@@ -113,6 +113,11 @@ def text2imageDecode():
         # EXECUTE ENCODING
         message = txt2img.decode(
             input_filepath=steg_image_filepath, password=password)
+
+        if 'Error:' in message:
+            flash(message)
+            return render_template('text-to-image-decode.html')
+
         session["steg_message"] = message
         return redirect('/text-to-image/decode/result')
 
