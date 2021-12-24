@@ -54,7 +54,7 @@ def merge(COVER_IMG_FILEPATH, SECRET_IMG_FILEPATH, OUTPUT_IMG_FILEPATH):
 
     # Check the images dimensions.
     if img2.size[0] > img1.size[0] or img2.size[1] > img1.size[1]:
-        raise ValueError('Image 2 should not be larger than Image 1!')
+        return 'Error: Image 2 should not be larger than Image 1!'
 
     # Get the pixel map of the two images.
     pixel_map1 = img1.load()

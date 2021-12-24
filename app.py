@@ -63,8 +63,14 @@ def text2imageEncode():
         steg_image_filepath = '{}-steg.png'.format(cover_image_filepath)
 
         # EXECUTE ENCODING
-        txt2img.encode(input_filepath=cover_image_filepath, text=message,
-                       output_filepath=steg_image_filepath, password=password)
+        msg = txt2img.encode(input_filepath=cover_image_filepath, text=message,
+                             output_filepath=steg_image_filepath, password=password)
+
+        if type(msg) == str:
+            if 'Error:' in msg:
+                flash(msg)
+                return render_template('text-to-image-encode.html')
+
         session["steg_image"] = steg_image_filepath
         return redirect('/text-to-image/encode/result')
 
@@ -107,6 +113,11 @@ def text2imageDecode():
         # EXECUTE ENCODING
         message = txt2img.decode(
             input_filepath=steg_image_filepath, password=password)
+
+        if 'Error:' in message:
+            flash(message)
+            return render_template('text-to-image-decode.html')
+
         session["steg_message"] = message
         return redirect('/text-to-image/decode/result')
 
@@ -172,8 +183,14 @@ def image2imageEncode():
             cover_image_filepath, secret_image_filename)
 
         # EXECUTE ENCODING
-        img2img.merge(COVER_IMG_FILEPATH=cover_image_filepath,
-                      SECRET_IMG_FILEPATH=secret_image_filepath, OUTPUT_IMG_FILEPATH=steg_image_filepath)
+        msg = img2img.merge(COVER_IMG_FILEPATH=cover_image_filepath,
+                            SECRET_IMG_FILEPATH=secret_image_filepath, OUTPUT_IMG_FILEPATH=steg_image_filepath)
+
+        if type(msg) == str:
+            if 'Error:' in msg:
+                flash(msg)
+                return render_template('image-to-image-encode.html')
+
         session["steg_image"] = steg_image_filepath
         return redirect('/image-to-image/encode/result')
 
@@ -214,8 +231,14 @@ def image2imageDecode():
         decoded_image_filepath = '{}-decoded.png'.format(steg_image_filepath)
 
         # EXECUTE ENCODING
-        img2img.unmerge(ENCODED_IMG_FILEPATH=steg_image_filepath,
-                        OUTPUT_IMG_FILEPATH=decoded_image_filepath)
+        msg = img2img.unmerge(ENCODED_IMG_FILEPATH=steg_image_filepath,
+                              OUTPUT_IMG_FILEPATH=decoded_image_filepath)
+
+        if type(msg) == str:
+            if 'Error:' in msg:
+                flash(msg)
+                return render_template('image-to-image-encode.html')
+
         session["decoded_image"] = decoded_image_filepath
         return redirect('/image-to-image/decode/result')
 
