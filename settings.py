@@ -5,3 +5,4 @@ load_dotenv()  # take environment variables from .env.
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 UPLOAD_DIR = os.getenv('UPLOAD_FOLDER')
+PORT = int(os.environ.get("PORT", 5000))
