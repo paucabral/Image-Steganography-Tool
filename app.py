@@ -253,8 +253,4 @@ def image2imageDecodeResult():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     app.run(threaded=True, host='0.0.0.0', port=5000)
-=======
-    app.run(debug=True, host='0.0.0.0', port=5000)
->>>>>>> 1b7e1fb6dde01e15a0bdf680ceb99f42b652b170
